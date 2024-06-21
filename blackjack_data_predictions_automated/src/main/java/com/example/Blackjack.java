@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Random;
 public class Blackjack {
 
-    //Win Condition Parameters: "Bust", "HigherCount", "Blackjack"
-
 
     static String[] cards = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
 
@@ -26,7 +24,7 @@ public class Blackjack {
     //Data variables
     static int initialPlayerCount;
     static int initialDealerCount;
-    static int playerDecision = 0; //0 for stand, 1 for hit, 2 for double down
+    static int playerDecision = 1; //0 for stand, 1 for hit, 2 for double down. Change this value when running hit or stand cases
     static int outcome; //0 for lose 1 for win(includes push)
     static boolean didBlackjackOccur;
     static int hands = 0; //number of times the program will run blackjack
@@ -37,10 +35,10 @@ public class Blackjack {
 
 
     public static void main(String[] args) {
-        while(hands < 26000) {
+        while(hands < 10000) { //change to number hands you want tested
             initialize();
-            stand(); //change to hit or double down for more data
-            //hit();
+            //stand(); //change to hit for more data
+            hit();
             updateSpreadsheet();
             playerCards.clear(); //clears player hand
             dealerCards.clear(); //clears dealer hand
@@ -50,12 +48,12 @@ public class Blackjack {
             }
             
         }
-        System.out.println(blackjackCount);
+        System.out.println(blackjackCount); //prints number of times blackjack occured at the initial deal
     }
 
      public static void updateSpreadsheet() {
         if(didBlackjackOccur == false) {
-            String filePath = "C:\\Users\\dalep\\Desktop\\Coding\\Java Projects\\blackjack_data_predictions_automated\\BlackjackData_StandValues.xlsx";
+            String filePath = "You\\File\\Path\\.xlsx"; //change this to match the file path of your excel file
             try (FileInputStream fis = new FileInputStream(filePath);
                 XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
 
