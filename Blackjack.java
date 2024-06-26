@@ -62,11 +62,11 @@ public class Blackjack {
             //Code runs after isGameOver returns false (blackjack, player/dealer win or bust)
             System.out.println("Play Again? (Y/N)");
             String choice = sc.nextLine();
-            if(choice.toUpperCase().contains("N")) {
+            if(choice.toUpperCase().equals("N")) {
                 sc.close();
                 status = false; //ends the code
             }
-            else if(choice.toUpperCase().contains("Y")) {
+            else if(choice.toUpperCase().equals("Y")) {
                 System.out.print("\033[H\033[2J");  
                 System.out.flush();  
             }
